@@ -1,0 +1,42 @@
+:root {
+  --warm-white: #fbf7f0;
+  --sage: #6b8f71;
+  --sage-dark: #55725a;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--warm-white);
+}
+
+@keyframes freshclock-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fc-rise {
+  animation: freshclock-rise 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes freshclock-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.fc-flash {
+  animation: freshclock-flash 1s linear infinite;
+}
+
+.fc-swipe {
+  touch-action: pan-y;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-rise { animation: none; }
+  .fc-flash { animation: none; }
+}

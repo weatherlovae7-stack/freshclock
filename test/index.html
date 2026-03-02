@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="FreshClock — 极简生鲜管理，避免买了忘吃导致浪费。" />
+    <title>FreshClock</title>
+    <meta name="theme-color" content="#FBF7F0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      window.tailwind = window.tailwind || {};
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sage: {
+                50: "#F3F7F4",
+                100: "#E2EEE5",
+                200: "#C5DDCB",
+                300: "#9FC4A9",
+                400: "#7BAB8A",
+                500: "#6B8F71",
+                600: "#55725A",
+                700: "#415744",
+                800: "#2D3C30",
+                900: "#1D2620"
+              },
+              warm: {
+                50: "#FFFDFA",
+                100: "#FBF7F0",
+                200: "#F4E9D8"
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-warm-100 text-slate-900">
+    <div id="root">
+      <div style="padding:16px;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;line-height:1.5">
+        <div style="font-weight:700;font-size:18px">FreshClock 加载中…</div>
+        <div style="margin-top:8px;color:#475569">如果一直停留在此页面，请打开浏览器控制台查看报错。</div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+    <script type="module">
+      const root = document.getElementById("root");
+      const showError = (title, detail) => {
+        root.innerHTML =
+          '<div style="padding:16px;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;line-height:1.5">' +
+          `<div style="font-weight:700;font-size:18px">${title}</div>` +
+          `<div style="margin-top:8px;color:#475569;white-space:pre-wrap">${detail}</div>` +
+          "</div>";
+      };
+
+      window.addEventListener("error", (e) => {
+        const msg = e?.message || "";
+        if (msg) showError("FreshClock 发生错误", msg);
+      });
+      window.addEventListener("unhandledrejection", (e) => {
+        const reason = e?.reason?.message || String(e?.reason || "");
+        if (reason) showError("FreshClock 发生错误", reason);
+      });
+
+      if (!window.React || !window.ReactDOM) {
+        showError(
+          "FreshClock 依赖未加载",
+          "请检查网络是否可访问 unpkg.com，或改用本地 vendor 方式加载 React 依赖。"
+        );
+      } else {
+        import("./app.js").catch((err) => {
+          console.error(err);
+          showError("FreshClock 启动失败", String(err?.message || err));
+        });
+      }
+    </script>
+  </body>
+</html>
