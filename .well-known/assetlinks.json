@@ -3,8 +3,8 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.example.freshclock",
-      "sha256_cert_fingerprints": ["00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"]
+      "package_name": "com.weatherlovae7.freshlock",
+      "sha256_cert_fingerprints": ["16:DD:2A:7E:3E:42:53:BD:04:17:49:D8:EB:BC:3C:6F:75:E2:F5:26:BB:36:45:C1:68:3E:2E:F3:22:7C:24:A9"]
     }
   }
 ]
