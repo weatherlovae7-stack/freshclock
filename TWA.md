@@ -11,6 +11,8 @@
   - `/terms.html`
   - `/.well-known/assetlinks.json`
 
+如果你使用的是 GitHub Pages，为了确保 `/.well-known/` 目录不会被构建器忽略，需要在站点根目录放置一个空文件 `.nojekyll`。
+
 ### 2) Play Console 的“隐私政策网址”
 
 - 填写你的公网隐私政策页面，例如：
